@@ -16,6 +16,7 @@ const javascriptRules = {
   }
 }
 
+const developmentPlugins = []
 const productionPlugins = [
   new CompressionPlugin()
 ]
@@ -30,7 +31,7 @@ module.exports = (env, {mode}) => ({
     ]
   },
   plugins: [
-    mode === 'production' && [...productionPlugins],
+    ...(mode === 'production' ? productionPlugins : developmentPlugins),
     new HtmlWebpackPlugin({
       title: 'Webpack Paso a Paso',
       template: 'src/index.html'
