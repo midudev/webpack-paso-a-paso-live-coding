@@ -16,6 +16,12 @@ const javascriptRules = {
   }
 }
 
+const typescriptRules = {
+  test: /\.tsx?$/,
+  exclude: /node_modules/,
+  use: 'ts-loader',
+}
+
 const productionPlugins = [
   new CompressionPlugin()
 ]
@@ -26,6 +32,7 @@ module.exports = (env, {mode}) => ({
   },
   module: {
     rules: [
+      typescriptRules,
       javascriptRules
     ]
   },

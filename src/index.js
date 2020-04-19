@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import {Hi} from './Hi.tsx'
 
 ReactDOM.render(
-  <h3>A que no es TAN difícil 👋</h3>,
+  <Hi name="Sara" />,
   document.getElementById('app')
 )
