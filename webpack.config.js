@@ -7,28 +7,27 @@ const javascriptRules = {
   use: {
     loader: 'babel-loader',
     options: {
-      presets: [
-        '@babel/preset-react',
-        '@babel/preset-env'
-      ],
+      presets: ['@babel/preset-react', '@babel/preset-env'],
       plugins: ['@babel/plugin-proposal-optional-chaining']
     }
   }
 }
 
 const developmentPlugins = []
-const productionPlugins = [
-  new CompressionPlugin()
-]
+const productionPlugins = [new CompressionPlugin()]
 
-module.exports = (env, {mode}) => ({
+module.exports = (env, { mode }) => ({
+  devServer: {
+    //contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9000,
+    historyApiFallback: true
+  },
   output: {
     filename: 'app.[contentHash].js'
   },
   module: {
-    rules: [
-      javascriptRules
-    ]
+    rules: [javascriptRules]
   },
   plugins: [
     ...(mode === 'production' ? productionPlugins : developmentPlugins),
